@@ -4,7 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 
 const cartRoutes = require("./routes/cartRoutes.js");
-const walletRoute = require("./routes/walletRoutes.js");
+const walletRoutes = require("./routes/walletRoutes.js");
 const addressRoutes = require("./routes/addressRoutes.js");
 const mintRoutes = require("./routes/mintRoutes");
 
@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // === Routes ===
 app.use("/api/cart", cartRoutes);
-app.use("/api/wallet", walletRoute);
+app.use("/api/wallet", walletRoutes);
 
 app.use("/api/addresses", addressRoutes);
 app.use("/api/signup", mintRoutes);

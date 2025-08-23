@@ -2,7 +2,7 @@ import { createAuth0Client } from 'https://cdn.auth0.com/js/auth0-spa-js/2.3/aut
 import { saveCart, getCartFromDB } from "./cartapi.js";
 import { fetchWallet } from "./walletapi.js";
 import { saveAddresses, saveAddressesToDB } from "./addressApi.js";
-
+import { mintNFT } from "./mintApi.js";
 
 const myAuthKey = {
     domain: "dev-b62l6w6s4k7oirma.us.auth0.com",
@@ -137,10 +137,40 @@ async function renderCart() {
         </div>`;
     }).join("");
 
+    //checknft
+
+    let discountApplied = false;
+    try {
+        const res = await fetch("http://localhost:4000/api/wallet", {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        if (!res.ok) {
+            console.warn("Wallet fetch failed with status:", res.status);
+        } else {
+            const data = await res.json();
+
+            // <-- Put the log here
+            console.log("Discount applied?", discountApplied, "NFT info:", data.nftInfo);
+
+
+            if (data.nftInfo?.nftSent) {
+                total *= 0.9; // apply 10% discount
+                discountApplied = true;
+            }
+        }
+    } catch (err) {
+        console.warn("Could not fetch NFT info:", err);
+    }
+
+
     checkoutSum.innerHTML = `
         <div class="checkout-container">
             ${itemsHtml}
-            <div class="checkout-total"><strong>Total: $${total.toFixed(2)}</strong></div>
+            <div class="checkout-total">
+                <strong>Total: $${total.toFixed(2)}</strong>
+               ${discountApplied ? '<p class="discount-msg">🎉 10% NFT discount applied!</p>' : ''}
+            </div>
         </div>`;
 
     const welcomeBox = document.getElementById("welcome-user");
@@ -154,6 +184,7 @@ async function renderCart() {
 async function renderWallet() {
     const token = await getTokenSafe();
     const wallet = await fetchWallet(token);
+    const user = await myAuth.getUser();
 
     console.log("User Wallet:", wallet);
 
@@ -164,7 +195,11 @@ async function renderWallet() {
       <p><strong>Wallet Address:</strong> ${wallet.wallet.address}</p>
       <p><strong>Private Key:</strong> <span class="blurred">${wallet.wallet.privatekey}</span></p>
     `;
-    }
+    } await mintNFT({
+        userId: user.sub,       // Auth0 unique user id
+        email: user.email,
+        wallet: wallet.wallet
+    });
 }
 
 // === 5. Main entry point ===

@@ -1,5 +1,5 @@
 const { ethers } = require("ethers");
-const contractABI = require("./ContractABI.json");
+const contractABI = require("./contractABI.json");
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -14,7 +14,7 @@ const contract = new ethers.Contract(
     wallet
 );
 
-export async function mintNFT(toAddress) {
+async function mintNFT(toAddress) {
     try {
         const tokenUri = process.env.TOKEN_URI;
         const tx = await contract.mintNft(toAddress, tokenUri);
@@ -28,3 +28,4 @@ export async function mintNFT(toAddress) {
         throw err;
     }
 }
+module.exports = { mintNFT };
