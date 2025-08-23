@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beauty bags</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">Beauty bags</div>
+        <nav>
+            <span id="welcome-user"></span>
+            <span id="wallet-box"></span>
+            <button id="logout" class="cta-button2">Logout</button>
+            <a href="index.html" class="cta-button2">Home</a>
+            <a href="cart.html" class="cta-button2">Cart</a>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <h2 class="checkout">Checkout</h2>
+        <div id="checkout-sum"></div>
+
+        <!-- Address form -->
+        <div class="address-section">
+            <h3>Enter delivery addresses</h3>
+            <label for="address1">Address 1:</label>
+            <input type="text" id="address1" placeholder="Enter first address" />
+
+            <label for="address2">Address 2:</label>
+            <input type="text" id="address2" placeholder="Enter second address" />
+
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" placeholder="Enter contact number" />
+
+            <button id="saveinfo" class="address-button">Save</button>
+        </div>
+
+        <button id="payment" class="paymentDesign">Confirm and pay</button>
+    </main>
+
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+    <script type="module" src="scripts/checkout/checkout.js"></script>
+
+</body>
+
+</html>

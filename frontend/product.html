@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Our Product - Luxe Handbags</title>
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo"> Beauty Handbag</div>
+        <nav>
+            <a href="/" class="cta-button2"> Home</a>
+            <a href="product.html" class="cta-button2">Product</a>
+            <a href="about.html" class="cta-button2"> About</a>
+            <a href="contact.html" class="cta-button2">Contact</a>
+            <a href="cart.html" class="cta-button2">Cart</a>
+        </nav>
+    </header>
+    <a href="cart.html" class="cart-design"> 🛒 View Cart</a>
+    <section class="product-grid">
+
+        <div class="product" data-id="1" data-name="Black stitched bag" data-price="1300">
+            <img src="images/bag2.jpeg" alt="A handstitched bag">
+            <h3> A stitched leather bag</h3>
+            <p> $1300</p>
+            <input type="number" min="1" max="20" value="1" />
+            <button onclick="addToCart(this)"> Add To Cart</button>
+        </div>
+        <div class="product" data-id="2" data-name="Jute tote bag" data-price="900">
+            <img src="images/bag3.jpeg" alt="A tote bag">
+            <h3> A jute tote bag</h3>
+            <p> $900</p>
+            <input type="number" min="1" max="20" value="1" />
+            <button onclick="addToCart(this)"> Add To Cart</button>
+
+        </div>
+
+
+
+    </section>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+    <script src="scripts/addCart.js">
+
+    </script>
+
+
+    <footer>
+        <p>
+            &copy; 2025 BeautyBags. all rights reserved.
+        </p>
+    </footer>
+
+</body>
+
+</html>

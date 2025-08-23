@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">Beauty Bags</div>
+        <nav>
+            <a href="index.html" class="cta-button2">Home</a>
+            <a href="product.html" class="cta-button2">Products</a>
+            <a href="about.html" class="cta-button2">About</a>
+            <a href="contact.html" class="cta-button2">Contact</a>
+            <a href="cart.html" class="cta-button2">Cart</a>
+        </nav>
+    </header>
+
+    <div class="cart-design">
+        <h2>My Cart</h2>
+
+        <label for="cart-selector">Choose a cart:</label>
+        <select id="cart-selector">
+            <option value="cart1">Cart 1</option>
+            <option value="cart2">Cart 2</option>
+            <option value="cart3">Cart 3</option>
+        </select>
+
+        <div id="cart-items"></div>
+        <p class="total" id="total-price"></p>
+        <div class="cart-actions">
+            <button id="clear-cart-btn" class="cta-button2">Clear Cart</button>
+            <button id="checkout-btn" class="cta-button2">Checkout</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 BeautyBags. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.3/auth0-spa-js.production.js"></script>
+    <script type="module" src="scripts/loadCart.js"></script>
+
+</body>
+
+</html>
