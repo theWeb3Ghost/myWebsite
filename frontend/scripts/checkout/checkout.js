@@ -8,7 +8,7 @@ const myAuthKey = {
     domain: "dev-b62l6w6s4k7oirma.us.auth0.com",
     clientId: "lNdbdg1Lbu9nupcqGGN4b7FiyMmQfpTT",
     authorizationParams: {
-        redirect_uri: "https://mybeautybags.vercel.app/frontend/checkout.html",
+        redirect_uri: "https://mybeautybags.vercel.app/checkout.html",
         scope: "openid profile email offline_access",
         audience: "https://mybeautybags.onrender.com/api"
     },
