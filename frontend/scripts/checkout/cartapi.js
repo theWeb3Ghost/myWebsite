@@ -1,7 +1,7 @@
 // === Save Cart to DB ===
 export async function saveCart(cart, token) {
   try {
-    const res = await fetch("http://localhost:4000/api/cart", {
+    const res = await fetch("https://mybeautybags.onrender.com/api/cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +25,7 @@ export async function saveCart(cart, token) {
 
 // === Get Cart from DB ===
 export async function getCartFromDB(token) {
-  const res = await fetch("http://localhost:4000/api/cart", {
+  const res = await fetch("https://mybeautybags.onrender.com/api/cart", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

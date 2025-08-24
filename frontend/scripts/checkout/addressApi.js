@@ -20,7 +20,7 @@ export async function saveAddressesToDB(token) {
     if (!data) throw new Error("No saved addresses found.");
     ;
 
-    const response = await fetch("http://localhost:4000/api/addresses", {
+    const response = await fetch("https://mybeautybags.onrender.com/api/addresses", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

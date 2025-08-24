@@ -6,7 +6,7 @@ async function initAuth0() {
         domain: "dev-b62l6w6s4k7oirma.us.auth0.com",
         clientId: "lNdbdg1Lbu9nupcqGGN4b7FiyMmQfpTT",
         authorizationParams: {
-            redirect_uri: "http://localhost:5500/frontend/checkout.html"
+            redirect_uri: "https://mybeautybags.vercel.app/checkout.html"
         },
         cacheLocation: "localstorage",
         useRefreshTokens: true
@@ -30,14 +30,14 @@ async function initAuth0() {
         // 👇 Not logged in yet → go to Auth0 login page
         return auth0.loginWithRedirect({
             authorizationParams: {
-                redirect_uri: window.location.origin + "/frontend/checkout.html"
+                redirect_uri: window.location.origin + "/checkout.html"
 
             }
         });
     }
 
     // 👇 Logged in already → send to checkout
-    window.location.href = "/frontend/checkout.html";
+    window.location.href = "/checkout.html";
 }
 
 initAuth0();

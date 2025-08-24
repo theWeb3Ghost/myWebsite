@@ -7,7 +7,7 @@ async function initializeAuth0() {
         domain: "dev-b62l6w6s4k7oirma.us.auth0.com",
         clientId: "lNdbdg1Lbu9nupcqGGN4b7FiyMmQfpTT",
         authorizationParams: {
-            redirect_uri: "http://localhost:5500/frontend/checkout.html"
+            redirect_uri: "https://mybeautybags.vercel.app/frontend/checkout.html"
         },
         cacheLocation: "localstorage",
         useRefreshTokens: true
@@ -126,14 +126,14 @@ async function proceedToCheckout() {
     if (!isAuthenticated) {
         await auth0.loginWithRedirect({
             authorizationParams: {
-                redirect_uri: window.location.origin + "/frontend/checkout.html"
+                redirect_uri: "https://mybeautybags.vercel.app/frontend/checkout.html"
             }
         });
         return;
     }
 
     // Already logged in
-    window.location.href = "/frontend/checkout.html";
+    window.location.href = "/checkout.html";
 }
 document.addEventListener("DOMContentLoaded", () => {
     const clearBtn = document.querySelector("#clear-cart-btn");

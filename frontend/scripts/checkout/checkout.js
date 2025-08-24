@@ -8,9 +8,9 @@ const myAuthKey = {
     domain: "dev-b62l6w6s4k7oirma.us.auth0.com",
     clientId: "lNdbdg1Lbu9nupcqGGN4b7FiyMmQfpTT",
     authorizationParams: {
-        redirect_uri: "http://localhost:5500/frontend/checkout.html",
+        redirect_uri: "https://mybeautybags.vercel.app/frontend/checkout.html",
         scope: "openid profile email offline_access",
-        audience: "http://localhost/api"
+        audience: "https://mybeautybags.onrender.com/api"
     },
     cacheLocation: "localstorage"
 };
@@ -34,7 +34,7 @@ async function initAuth0() {
     if (!isAuthenticated) {
         await myAuth.loginWithRedirect({
             authorizationParams: {
-                redirect_uri: window.location.origin + "/frontend/checkout.html"
+                redirect_uri: window.location.origin + "/checkout.html"
             }
         });
         return false;
@@ -47,14 +47,14 @@ async function initAuth0() {
 async function getTokenSafe() {
     try {
         return await myAuth.getTokenSilently({
-            audience: "http://localhost/api",
+            audience: "https://mybeautybags.onrender.com/api",
             scope: "openid profile email offline_access"
         });
     } catch (err) {
         if (err.error === "consent_required") {
             await myAuth.loginWithRedirect({
                 authorizationParams: {
-                    audience: "http://localhost/api",
+                    audience: "https://mybeautybags.onrender.com/api",
                     scope: "openid profile email offline_access"
                 }
             });
@@ -141,7 +141,7 @@ async function renderCart() {
 
     let discountApplied = false;
     try {
-        const res = await fetch("http://localhost:4000/api/wallet", {
+        const res = await fetch("https://mybeautybags.onrender.com/api/wallet", {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` }
         });
@@ -219,7 +219,7 @@ if (logoutBtn) {
         localStorage.clear();
         sessionStorage.clear();
         myAuth.logout({
-            logoutParams: { returnTo: "http://localhost:5500/frontend/auth.html" }
+            logoutParams: { returnTo: "https://mybeautybags.vercel.app/auth.html" }
         });
     });
 }
