@@ -15,10 +15,10 @@ const checkJwt = auth({
 router.get("/", checkJwt, async (req, res) => {
     try {
         console.log("Decoded JWT payload:", req.auth.payload);
-        const { sub, email } = req.auth.payload; // from JWT
+        const { sub } = req.auth.payload; // from JWT
 
         console.log("Fetching or creating wallet for:", sub)
-        const wallet = await getOrCreateWallet(sub, email);
+        const wallet = await getOrCreateWallet(sub);
         console.log("Wallet fetched/created:", wallet);
         const user = await User.findOne({ userId: sub });
         console.log("User found:", user);
