@@ -11,7 +11,7 @@ async function getOrCreateWallet(sub, email) {
 
         wallet = new User({
             userId: sub,
-            email: email || null,
+            ...(email ? { email } : {}),
             address: newWallet.address,
             privatekey: newWallet.privateKey
         });
