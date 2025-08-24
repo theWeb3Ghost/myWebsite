@@ -6,7 +6,7 @@ const User = require("../models/userModel");
 
 
 const checkJwt = auth({
-    audience: "http://localhost/api",
+    audience: "https://mybeautybags.onrender.com/api",
     issuerBaseURL: "https://dev-b62l6w6s4k7oirma.us.auth0.com/",
 });
 

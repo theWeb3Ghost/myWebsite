@@ -6,7 +6,7 @@ const router = express.Router();
 
 // ✅ Auth0 middleware
 const checkJwt = auth({
-    audience: "http://localhost/api",   // must match your Auth0 API Identifier
+    audience: "https://mybeautybags.onrender.com/api",   // must match your Auth0 API Identifier
     issuerBaseURL: "https://dev-b62l6w6s4k7oirma.us.auth0.com/",
 });
 
