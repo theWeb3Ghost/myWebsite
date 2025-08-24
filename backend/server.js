@@ -33,5 +33,7 @@ app.use("/api/addresses", addressRoutes);
 app.use("/api/signup", mintRoutes);
 
 
-const PORT = 4000;
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+const port = process.env.PORT || 4000;
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
